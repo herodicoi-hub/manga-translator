@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'browser_screen.dart';
 import 'gemini_service.dart';
 import 'settings_screen.dart';
 
@@ -29,6 +30,14 @@ class _HomeScreenState extends State<HomeScreen> {
   bool get _isAndroid {
     try {
       return Platform.isAndroid;
+    } catch (_) {
+      return false;
+    }
+  }
+
+  bool get _isWindows {
+    try {
+      return Platform.isWindows;
     } catch (_) {
       return false;
     }
@@ -251,6 +260,17 @@ class _HomeScreenState extends State<HomeScreen> {
             onPressed: _busy ? null : () => _pickImage(ImageSource.camera),
             icon: const Icon(Icons.photo_camera),
             label: const Text('Take photo'),
+          ),
+        if (_isWindows)
+          FilledButton.tonalIcon(
+            onPressed: _busy
+                ? null
+                : () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (_) => const BrowserScreen()));
+                  },
+            icon: const Icon(Icons.public),
+            label: const Text('Translate from a website'),
           ),
         if (_imageBytes != null)
           FilledButton.icon(

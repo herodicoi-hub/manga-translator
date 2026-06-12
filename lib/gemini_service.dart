@@ -47,7 +47,8 @@ class TranslationResult {
 /// Thrown with a plain-English message that is safe to show the user.
 class GeminiException implements Exception {
   final String message;
-  GeminiException(this.message);
+  final int? statusCode;
+  GeminiException(this.message, {this.statusCode});
 
   @override
   String toString() => message;
@@ -136,7 +137,8 @@ Future<TranslationResult> translateImage({
   }
 
   if (response.statusCode != 200) {
-    throw GeminiException(_friendlyHttpError(response));
+    throw GeminiException(_friendlyHttpError(response),
+        statusCode: response.statusCode);
   }
 
   return _parseResponse(response.body);

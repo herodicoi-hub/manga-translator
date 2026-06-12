@@ -15,6 +15,21 @@ Google Gemini using a **free** API key.
    bubble, thought bubble, narration box, sign, and sound effect — in the
    right reading order — plus a one-line summary of the page.
 
+## Translate whole chapters from websites (Windows)
+
+On Windows, **Translate from a website** opens a built-in browser with
+shortcuts to MangaFire, Rawkuma (Japanese raws), and MangaDex (many
+languages) — any other manga site works too via the address bar.
+
+1. Browse to a chapter and scroll through it so all pages load.
+2. Click **Translate this chapter**.
+3. The app collects the page images and translates them one by one. Read
+   with the arrow keys: page image on the left, translations on the right.
+
+Pages are translated about one every 10–15 seconds to stay inside the free
+Gemini limits; a chapter is typically done in a few minutes, and you can
+start reading page 1 right away.
+
 ## One-time setup (free)
 
 1. In the app, open **Settings** (gear icon).

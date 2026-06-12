@@ -48,6 +48,10 @@ jobs:
 
       - name: Build Windows app
         run: flutter build windows --release
+        env:
+          # webview_windows still uses MSVC's old experimental coroutines;
+          # newer Visual Studio hard-errors on them unless this is defined.
+          CL: /D_SILENCE_EXPERIMENTAL_COROUTINE_DEPRECATION_WARNINGS
 
       - name: Zip the app
         run: Compress-Archive -Path build/windows/x64/runner/Release/* -DestinationPath manga-translator-windows.zip
